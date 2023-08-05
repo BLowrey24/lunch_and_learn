@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "get recipes", type: :request do
   context "happy path" do
-    it "returns a list of recipes based on the country passed" do
+    it "returns a list of recipes based on the country passed", :vcr => { :record => :new_episodes } do
       get "/api/v1/recipes?country=spain"
       expect(response).to be_successful
       recipes = JSON.parse(response.body, symbolize_names: true)
@@ -27,7 +27,7 @@ RSpec.describe "get recipes", type: :request do
       expect(recipes[:data].first[:attributes][:image]).to be_a String
     end
 
-    it "returns a list of recipes for a random country when country is not specified" do
+    it "returns a list of recipes for a random country when country is not specified", :vcr => { :record => :new_episodes } do
       get "/api/v1/recipes"
       expect(response).to be_successful
       recipes = JSON.parse(response.body, symbolize_names: true)

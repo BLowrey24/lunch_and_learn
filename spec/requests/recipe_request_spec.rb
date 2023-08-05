@@ -50,5 +50,30 @@ RSpec.describe "get recipes", type: :request do
       expect(recipes[:data].first[:attributes]).to have_key(:image)
       expect(recipes[:data].first[:attributes][:image]).to be_a String
     end
+
+    it 'returns an empty array when no recipes match the chosen country', :vcr => { :record => :new_episodes } do
+      country = "notacountry"
+      get "/api/v1/recipes?country=#{country}"
+      expect(response).to be_successful
+
+      empty_array = JSON.parse(response.body, symbolize_names: true)
+
+      expect(empty_array).to be_a Hash
+      expect(empty_array).to have_key(:data)
+      expect(empty_array[:data]).to be_a Array
+      expect(empty_array[:data]).to eq([])
+    end
+
+    it 'returns an empty array when an empty no country is given as a parameter', :vcr => { :record => :new_episodes } do
+      get "/api/v1/recipes?country="
+      expect(response).to be_successful
+
+      empty_array = JSON.parse(response.body, symbolize_names: true)
+
+      expect(empty_array).to be_a(Hash)
+      expect(empty_array).to have_key(:data)
+      expect(empty_array[:data]).to be_an(Array)
+      expect(empty_array[:data]).to eq([])
+    end
   end
 end

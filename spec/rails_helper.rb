@@ -72,9 +72,9 @@ Shoulda::Matchers.configure do |config|
 end
 
 VCR.configure do |config|
-  config.allow_http_connections_when_no_cassette = true
   config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   config.hook_into :webmock
-  config.default_cassette_options = { re_record_interval: 30.days }
+  config.filter_sensitive_data("edamam_key") { ENV["edamam_key"] }
+  config.filter_sensitive_data("edamam_id") { ENV["edamam_key"] }
   config.configure_rspec_metadata!
 end

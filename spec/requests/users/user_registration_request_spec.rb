@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe "Users API", type: :request do
   describe 'POST #create' do
     it 'creates a new User' do
-
       valid_params = {
         "name": "Odell",
         "email": "goodboy@ruffruff.com",
@@ -11,8 +10,9 @@ RSpec.describe "Users API", type: :request do
         "password_confirmation": "treats4lyf"
       }
 
-      post "/api/v1/users", params: { user: valid_params }
+      post "/api/v1/users", params: valid_params
 
+      expect(response).to have_http_status(:created)
       expect(response).to have_http_status(:created)
       user = JSON.parse(response.body, symbolize_names: true)
 
@@ -28,6 +28,54 @@ RSpec.describe "Users API", type: :request do
       expect(user[:data][:attributes][:email]).to be_a String
       expect(user[:data][:attributes]).to have_key(:api_key)
       expect(user[:data][:attributes][:api_key]).to be_a String
+    end
+
+    it "returns an error when given invalid params" do
+      invalid_params = {
+        "name": "Odell",
+        "email": "",
+        "password": "treats4lyf",
+        "password_confirmation": "treats4lyf"
+      }
+
+      post "/api/v1/users", params: { user: invalid_params }
+      expect(response).to have_http_status(:unprocessable_entity)
+      error = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error).to be_a Hash
+      expect(error).to have_key(:error)
+    end
+
+    it "returns an error when given invalid params" do
+      invalid_params = {
+        "name": "Odell",
+        "email": "goodboy@ruffruff.com",
+        "password": "",
+        "password_confirmation": "treats4lyf"
+      }
+
+      post "/api/v1/users", params: { user: invalid_params }
+      expect(response).to have_http_status(:unprocessable_entity)
+      error = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error).to be_a Hash
+      expect(error).to have_key(:error)
+    end
+
+    it "returns an error when given invalid params" do
+      invalid_params = {
+        "name": "Odell",
+        "email": "goodboy@ruffruff.com",
+        "password": "notmatching",
+        "password_confirmation": "treats4lyf"
+      }
+
+      post "/api/v1/users", params: { user: invalid_params }
+      expect(response).to have_http_status(:unprocessable_entity)
+      error = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error).to be_a Hash
+      expect(error).to have_key(:error)
     end
   end
 end

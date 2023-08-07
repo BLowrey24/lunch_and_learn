@@ -6,6 +6,9 @@ class User < ApplicationRecord
   private
 
   def generate_api_key
-    
+    loop do
+      self.api_key = SecureRandom.alphanumeric(13)
+      break unless User.exists?(api_key: api_key)
+    end
   end
 end

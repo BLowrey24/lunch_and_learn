@@ -11,4 +11,8 @@ class CountryFacade
       country
     end
   end
+
+  def get_country_capital(country_name)
+    service.get_country_capital(country_name)
+  end
 end

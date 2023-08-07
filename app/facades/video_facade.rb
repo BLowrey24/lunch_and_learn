@@ -5,7 +5,6 @@ class VideoFacade
 
   def get_video(country)
     videos = service.get_videos(country)
-    #  require 'pry'; binding.pry
     if videos[:items].empty?
       nil
     else

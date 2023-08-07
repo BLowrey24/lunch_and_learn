@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.api-ninjas.com/v1/airquality?city=Abuja
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - 1bGTyAa+oNPw9qmGblh3RA==G5Kg9AjjgG0MfaQJ
+      User-Agent:
+      - Faraday v2.7.10
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '276'
+      Connection:
+      - keep-alive
+      Date:
+      - Mon, 07 Aug 2023 17:02:22 GMT
+      X-Amzn-Requestid:
+      - 936539d4-6ecd-4456-a0e0-070a8edcf3be
+      Access-Control-Allow-Origin:
+      - "*"
+      Allow:
+      - GET, OPTIONS, POST
+      Access-Control-Allow-Headers:
+      - "*"
+      X-Amz-Apigw-Id:
+      - JTKApEKDvHcFilw=
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS, POST
+      X-Amzn-Trace-Id:
+      - Root=1-64d1239d-4f6889a321cc033560aee4c3;Sampled=0;lineage=d5ca6d75:0
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 866f302a57cba8f091abc5bab69ed384.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - ATL56-C2
+      X-Amz-Cf-Id:
+      - Fkcn6Qnmo2v5wJkxQhuvEGIUGy9qpJmXkuT1aePSUxweDbnBj7CpLA==
+    body:
+      encoding: UTF-8
+      string: '{"CO": {"concentration": 467.3, "aqi": 5}, "NO2": {"concentration":
+        4.07, "aqi": 5}, "O3": {"concentration": 29.68, "aqi": 25}, "SO2": {"concentration":
+        0.41, "aqi": 0}, "PM2.5": {"concentration": 5.23, "aqi": 16}, "PM10": {"concentration":
+        6.67, "aqi": 6}, "overall_aqi": 25}'
+  recorded_at: Mon, 07 Aug 2023 17:02:22 GMT
+recorded_with: VCR 6.2.0

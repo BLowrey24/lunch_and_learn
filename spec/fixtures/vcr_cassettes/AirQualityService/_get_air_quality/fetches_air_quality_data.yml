@@ -1,0 +1,114 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.api-ninjas.com/v1/airquality?city=Test%20City
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - 1bGTyAa+oNPw9qmGblh3RA==G5Kg9AjjgG0MfaQJ
+      User-Agent:
+      - Faraday v2.7.10
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '33'
+      Connection:
+      - keep-alive
+      Date:
+      - Mon, 07 Aug 2023 17:05:31 GMT
+      X-Amzn-Requestid:
+      - b2572966-8405-4ac6-9c70-3f63ee65084e
+      Access-Control-Allow-Origin:
+      - "*"
+      Allow:
+      - GET, OPTIONS, POST
+      Access-Control-Allow-Headers:
+      - "*"
+      X-Amz-Apigw-Id:
+      - JTKeMGFAPHcFqyQ=
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS, POST
+      X-Amzn-Trace-Id:
+      - Root=1-64d1245a-1b9142cb29c9ee034e87853e;Sampled=0;lineage=d5ca6d75:0
+      X-Cache:
+      - Error from cloudfront
+      Via:
+      - 1.1 2a09fa5fd8ab41f26397f9ec7ba80dea.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - ATL56-C2
+      X-Amz-Cf-Id:
+      - hqYY8vxI2RLprevGL-eD9-BdA3eL363MZKpu0X4nQZwxBOFWRV5DIg==
+    body:
+      encoding: UTF-8
+      string: '{"error": "Could not find city."}'
+  recorded_at: Mon, 07 Aug 2023 17:05:31 GMT
+- request:
+    method: get
+    uri: https://api.api-ninjas.com/v1/airquality?city=France
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - 1bGTyAa+oNPw9qmGblh3RA==G5Kg9AjjgG0MfaQJ
+      User-Agent:
+      - Faraday v2.7.10
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '276'
+      Connection:
+      - keep-alive
+      Date:
+      - Mon, 07 Aug 2023 17:06:01 GMT
+      X-Amzn-Requestid:
+      - 81ebe9e1-b358-4892-b821-5e0d153d4a2c
+      Access-Control-Allow-Origin:
+      - "*"
+      Allow:
+      - GET, OPTIONS, POST
+      Access-Control-Allow-Headers:
+      - "*"
+      X-Amz-Apigw-Id:
+      - JTKi5EWPPHcFY8w=
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS, POST
+      X-Amzn-Trace-Id:
+      - Root=1-64d12478-516e78f74861821b5fe0b642;Sampled=0;lineage=d5ca6d75:0
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 f4710a63efd91d46133023148eb02e4e.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - ATL56-C2
+      X-Amz-Cf-Id:
+      - qCVme3eTGb5z_Z2C9YwUrEYsPVINxIVwtukXQTvx2g1Oi-rhm851Lg==
+    body:
+      encoding: UTF-8
+      string: '{"CO": {"concentration": 185.25, "aqi": 2}, "NO2": {"concentration":
+        2.59, "aqi": 3}, "O3": {"concentration": 55.08, "aqi": 46}, "SO2": {"concentration":
+        0.22, "aqi": 0}, "PM2.5": {"concentration": 1.01, "aqi": 3}, "PM10": {"concentration":
+        1.47, "aqi": 1}, "overall_aqi": 46}'
+  recorded_at: Mon, 07 Aug 2023 17:06:01 GMT
+recorded_with: VCR 6.2.0

@@ -7,7 +7,6 @@ RSpec.describe "Air Quality API", type: :request do
       get "/api/v1/air_quality?country=#{country}"
       expect(response).to be_successful
       parsed_body = JSON.parse(response.body, symbolize_names: true)
-      #  require 'pry'; binding.pry
 
       expect(parsed_body).to have_key(:data)
       expect(parsed_body[:data]).to have_key(:id)

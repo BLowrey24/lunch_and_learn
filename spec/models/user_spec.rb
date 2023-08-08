@@ -6,6 +6,10 @@ RSpec.describe User, type: :model do
     it { should validate_uniqueness_of(:email) }
   end
 
+  describe "relationships" do
+    it { should have_many(:favorites)}
+  end
+
   describe "has_secure_password" do
     it "should have a password digest" do
       user = User.create!(email: "baston@example.com", password: "password1324", password_confirmation: "password1324")

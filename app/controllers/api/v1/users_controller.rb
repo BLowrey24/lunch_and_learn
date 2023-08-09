@@ -4,7 +4,7 @@ class Api::V1::UsersController < ApplicationController
     if user.save
       render json: UserSerializer.new(user).serialize, status: :created
     else
-      render json: { error: user.errors.full_messages.join(', ') }, status: :unprocessable_entity
+      render json: { error: 'Invalid credentials' }, status: :unauthorized
     end
   end
 
